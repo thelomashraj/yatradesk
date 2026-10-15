@@ -1,0 +1,2 @@
+import {NextResponse} from "next/server";import {supabaseAdmin} from "@/lib/supabase/server";
+export async function GET(){if(!supabaseAdmin)return NextResponse.json({status:"degraded",database:"unconfigured"},{status:503});const [{error},jobs]=await Promise.all([supabaseAdmin.from("organizations").select("id",{head:true}).limit(1),supabaseAdmin.from("jobs").select("id",{count:"exact",head:true}).eq("status","queued")]);return NextResponse.json({status:error?"degraded":"ok",database:error?"error":"ok",queued_jobs:jobs.count??0},{status:error?503:200})}

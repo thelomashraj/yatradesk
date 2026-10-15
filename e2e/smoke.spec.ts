@@ -1,0 +1,4 @@
+import {test,expect} from "@playwright/test";
+test("dashboard opens with agency overview",async({page})=>{await page.goto("/");await expect(page.getByRole("heading",{name:/Good morning, Aarav/})).toBeVisible();await expect(page.getByText("Sandbox mode")).toBeVisible()});
+test("agent can open the inbox and review a conversation",async({page})=>{await page.goto("/inbox");await expect(page.getByRole("heading",{name:"Inbox"})).toBeVisible();await expect(page.getByText("Ananya Sharma").first()).toBeVisible();await expect(page.getByText("Trip requirements")).toBeVisible()});
+test("package catalog shows demo destinations",async({page})=>{await page.goto("/packages");await expect(page.getByRole("heading",{name:"Package catalog"})).toBeVisible();await expect(page.getByText("Goa Coast & Culture")).toBeVisible();await expect(page.getByText("Dubai City & Desert")).toBeVisible()});

@@ -1,0 +1,10 @@
+{
+  "name": "yatradesk",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.34.3",
+  "scripts": {"dev":"next dev","build":"next build","start":"next start","lint":"eslint .","typecheck":"tsc --noEmit","test":"vitest run","test:e2e":"playwright test","db:migrate":"supabase db push","seed":"tsx scripts/seed.ts"},
+  "dependencies": {"@anthropic-ai/sdk":"^0.39.0","@react-pdf/renderer":"^4.1.6","@sentry/nextjs":"^9.0.0","@supabase/ssr":"^0.5.2","@supabase/supabase-js":"^2.49.1","clsx":"^2.1.1","lucide-react":"^0.468.0","next":"15.1.6","pino":"^9.6.0","react":"^19.0.0","react-dom":"^19.0.0","razorpay":"^2.9.5","zod":"^3.24.1"},
+  "devDependencies": {"@playwright/test":"^1.50.1","@tailwindcss/postcss":"^4.0.0","@types/node":"^22.13.4","@types/react":"^19.0.8","@types/react-dom":"^19.0.3","autoprefixer":"^10.4.20","@eslint/eslintrc":"^3.3.1","eslint":"^9.19.0","eslint-config-next":"15.1.6","postcss":"^8.5.1","tailwindcss":"^4.0.0","tsx":"^4.19.2","typescript":"^5.7.3","vitest":"^3.0.5"},
+  "engines":{"node":">=20"}
+}

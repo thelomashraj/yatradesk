@@ -1,0 +1,3 @@
+import {NextRequest,NextResponse} from "next/server";import {z} from "zod";import {supabaseAdmin} from "@/lib/supabase/server";
+const tokenSchema=z.string().regex(/^[A-Za-z0-9_-]{24,64}$/);
+export async function GET(_req:NextRequest,{params}:{params:Promise<{token:string}>}){const {token}=await params;if(!tokenSchema.safeParse(token).success)return new NextResponse("Not found",{status:404});if(!supabaseAdmin)return new NextResponse("Unavailable",{status:503});const {data,error}=await supabaseAdmin.rpc("public_quote",{token});if(error||!data)return new NextResponse("Not found",{status:404});return NextResponse.json(data,{headers:{"Cache-Control":"no-store","X-Robots-Tag":"noindex, nofollow"}})}
